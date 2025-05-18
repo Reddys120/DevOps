@@ -23,7 +23,7 @@ VALIDATE(){
     fi
 }
 
-echo "Script Execution Started at $timestamp" &>>$LOG_FOLDER
+echo "Script Execution Started at $timestamp" & >>$LOGS
 
 if [ $USERID -ne 0 ] 
 then
@@ -31,21 +31,21 @@ then
     exit 1 
 fi
 echo "Checking for MYSQL installation"
-dnf list installed mysql &>> $LOG_FOLDER
+dnf list installed mysql & >>$LOGS
 
 if [ $? -ne 0 ]
 then # not installed
-    dnf install mysql -y &>> $LOG_FOLDER
+    dnf install mysql -y & >>$LOGS
     VALIDATE $? INSTALLING MYSQL
 else
     echo -e "MYSQL IS ALREADY $YELLOW INSTALLED"
 fi
 
 echo "Checking for GIT installation"
-dnf list installed git &>> $LOG_FOLDER
+dnf list installed git & >>$LOGS
 if [ $? -ne 0 ]
 then
-    dnf install git -y &>> $LOG_FOLDER
+    dnf install git -y & >>$LOGS
     VALIDATE $? INSTALLING GIT
 else
     echo -e "GIT IS ALREADY $YELLOW INSTALLED"
