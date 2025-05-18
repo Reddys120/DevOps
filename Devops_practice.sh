@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "Check for number of passed students"
-Results=("50" "60" "30" "46" "35" "80" "75")
+Number=("50" "60" "30" "46" "35" "80" "75")
 Students=$1
-if [$Results = 35 ]; then
-    echo "$Results of the $1 passed"
+
+if [$Number -gt 35 ]
+then
+    echo "  Number of students $1 passed"
 else 
-    echo "$Results of the $1 not passed"
-fi
-echo ""
+    echo "Number of students $1 not passed"
