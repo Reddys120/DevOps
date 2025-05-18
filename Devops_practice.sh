@@ -2,6 +2,18 @@
 
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 USERID=$(id -u)
+
+validate(){
+    if [ $1 -ne 0 ]
+    then
+        echo "Error:: $2 ... failed"
+        exit 1
+    else
+        echo "$2 is success" 
+        echo "Current timestamp: $timestamp"
+    fi
+}
+
 if [ $USERID -ne 0 ] 
 then
     echo "ERROR:: You must have sudo previliges"
@@ -9,18 +21,11 @@ then
 fi
 echo "Checking for MYSQL installation"
 dnf list installed mysql
-
+validate
 if [ $? -ne 0 ]
 then # not installed
     dnf install mysql -y
-    if [ $? -ne 0 ]
-    then
-        echo "Error:: Installation of mysql ... failed"
-        exit 1
-    else
-        echo "Installation of mysql is success" 
-        echo "Current timestamp: $timestamp"
-    fi
+    validate $? installing mysql
 else
     echo "Mysql is already installed"
 
@@ -32,22 +37,8 @@ dnf list installed git
 if [ $? -ne 0 ]
 then
     dnf install git -y
-    if [ $? -ne 0 ]
-    then 
-        echo "Installation of Git Failed"
-        exit 1
-    else 
-        echo "Installation of Git is Success"
-    fi
+    validate $? installing Git
 else
     echo "Git is already Installed"
 fi
 
-# dnf install git -y
-# if [ $? -ne 0 ]
-# then 
-#     echo "installation of git ... failed"
-#     exit 1
-# else 
-#     echo "installation of git is success"
-# fi
