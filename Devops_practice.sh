@@ -1,6 +1,8 @@
 #!/bin/bash
 
-$Date=(time)
+timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+echo "Current timestamp: $timestamp"
+
 USERID=(id -u)
 if [$USERID -ne 0] 
 then
