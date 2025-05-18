@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-
-Timestamp=$('date +%Y-%m-%d-%H-%M-%S')
+Timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 USERID=$(id -u)
 RED="\e[31m"
 GREEN="\e[32m"
