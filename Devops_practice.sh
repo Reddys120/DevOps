@@ -2,10 +2,10 @@
 
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 USERID=$(id -u)
-RED='\e[31m'
-GREEN='\e[32m'
-YELLOW='\e[33m'
-BLUE='\e[34m'
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
 
 VALIDATE(){
     if [ $1 -ne 0 ]
