@@ -1,9 +1,8 @@
 #!/bin/bash
 
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
-echo "Current timestamp: $timestamp"
-
 USERID=(id -u)
+
 if [$USERID -ne 0] 
 then
     echo "ERROR:: You must have sudo previliges"
@@ -21,6 +20,7 @@ then # not installed
         exit 1
     else
         echo "Installation of mysql is success" 
+        echo "Current timestamp: $timestamp"
     fi
 else
     echo "Mysql is already installed"
