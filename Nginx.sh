@@ -6,3 +6,5 @@ if [ $USERID -ne 0 ]
 then
     echo "ERROR:: You must have sudo previliges"
 fi
+
+dnf install nginx -y
