@@ -2,14 +2,18 @@
 
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 USERID=$(id -u)
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 ... failed"
+        echo "$2 ... $RED FAILED"
         exit 1
     else
-        echo "$2 is success" 
+        echo "$2 is $GREEN SUCCESS" 
         echo "Current timestamp: $timestamp"
     fi
 }
@@ -25,9 +29,9 @@ dnf list installed mysql
 if [ $? -ne 0 ]
 then # not installed
     dnf install mysql -y
-    VALIDATE $? installing mysql
+    VALIDATE $? INSTALLING MYSQL
 else
-    echo "Mysql is already installed"
+    echo "MYSQL IS $YELLOW ALREADY INSTALLED"
 
 
 fi
@@ -37,8 +41,8 @@ dnf list installed git
 if [ $? -ne 0 ]
 then
     dnf install git -y
-    validate $? installing Git
+    VALIDATE $? INSTALLING GIT
 else
-    echo "Git is already Installed"
+    echo "GIT IS $YELLOW ALREADY INSTALLED"
 fi
 
