@@ -43,7 +43,7 @@ Variable	Description
 echo "$0	Script name"
 echo "$1-$9	Positional arguments"
 echo "$@	All arguments (individually quoted)"
-echo "$*	All arguments (as a single string)""
+echo "$*	All arguments (as a single string)"
 echo "$#	Number of arguments"
 echo "$?	Exit status of last command"
 echo "$$	PID of current script"
