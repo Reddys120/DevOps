@@ -35,3 +35,5 @@ echo "PID of last background command: $!"
 
 # $_ - Last argument of the previous command
 echo "Last argument of last command: $_"
+
+echo ""
