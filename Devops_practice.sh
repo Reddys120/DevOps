@@ -6,7 +6,6 @@ Students=$1
 
 if [$Number -gt 35 ]
 then
-    echo "  Number of students $1 passed"
+    echo "students passed"
 else 
-    echo "Number of students $1 not passed"
-    
+    echo "students not passed"
