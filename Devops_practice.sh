@@ -20,7 +20,7 @@ VALIDATE(){
 
 if [ $USERID -ne 0 ] 
 then
-    echo -e "$YELLOW ERROR:: You must have sudo previliges"
+    echo "ERROR:: You must have sudo previliges"
     exit 1 
 fi
 echo "Checking for MYSQL installation"
