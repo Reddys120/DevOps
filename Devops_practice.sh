@@ -3,10 +3,10 @@
 timestamp=$(date '+%Y-%m-%d %H:%M:%S')
 USERID=$(id -u)
 
-validate(){
+VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "Error:: $2 ... failed"
+        echo "$2 ... failed"
         exit 1
     else
         echo "$2 is success" 
