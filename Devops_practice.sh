@@ -9,3 +9,5 @@ then
     echo "students passed"
 else 
     echo "students not passed"
+
+echo ""
