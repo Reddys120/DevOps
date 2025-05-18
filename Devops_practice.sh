@@ -24,6 +24,7 @@ else
 
 
 fi
+echo "PID of last background command: $!"
 
 echo "Checking for GIT installation"
 dnf list installed git
