@@ -7,4 +7,5 @@ then
     echo "ERROR:: You must have sudo previliges"
 fi
 
-dnf install nginx -y
+dnf install mysql -y
+echo "$? = 0 
