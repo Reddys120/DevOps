@@ -21,7 +21,7 @@ VALIDATE(){
     fi
 }
 
-echo "Script Execution Started at: $timestamp" &>>$LOGS
+echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 if [ $USERID -ne 0 ] 
 then
@@ -46,3 +46,18 @@ then
 else
     echo -e "GIT IS ALREADY $YELLOW INSTALLED"
 fi 
+
+for package in $@
+do  
+    dnf list installed $package &>>$LOGS
+    if [ $? -ne 0 ]
+    then
+        dnf install $package -y &>>$LOGS
+        VALIDATE $? "Installing $package"
+    else 
+    echo -e "$package IS ALREADY $YELLOW INSTALLED"
+    fi
+done
+
+
+
