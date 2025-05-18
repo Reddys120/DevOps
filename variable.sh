@@ -1,7 +1,7 @@
 #!/bin/bash
 
-Person1=Advik
-Person2=sandhya
+Person1=$1
+Person2=$2
 Expression=Love-you
 
 
