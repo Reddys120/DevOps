@@ -9,3 +9,4 @@ then
     echo "  Number of students $1 passed"
 else 
     echo "Number of students $1 not passed"
+    
