@@ -21,7 +21,7 @@ then
 fi
 echo "Checking for MYSQL installation"
 dnf list installed mysql
-validate
+
 if [ $? -ne 0 ]
 then # not installed
     dnf install mysql -y
