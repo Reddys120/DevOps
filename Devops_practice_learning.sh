@@ -28,7 +28,6 @@ then
     echo "ERROR:: You must have sudo previliges"
     exit 1 
 fi
-echo "Checking for MYSQL installation"
 dnf list installed mysql & >>$LOGS
 
 if [ $? -ne 0 ]
