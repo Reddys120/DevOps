@@ -10,17 +10,17 @@ BLUE="\e[34m"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo "$2 ... $RED FAILED"
+        echo -e "$2 ... $RED FAILED"
         exit 1
     else
-        echo "$2 is $GREEN SUCCESS" 
+        echo -e "$2 is $GREEN SUCCESS" 
         echo "Current timestamp: $timestamp"
     fi
 }
 
 if [ $USERID -ne 0 ] 
 then
-    echo "ERROR:: You must have sudo previliges"
+    echo -e "$RED ERROR:: You must have sudo previliges"
     exit 1 
 fi
 echo "Checking for MYSQL installation"
@@ -31,7 +31,7 @@ then # not installed
     dnf install mysql -y
     VALIDATE $? INSTALLING MYSQL
 else
-    echo "MYSQL IS $YELLOW ALREADY INSTALLED"
+    echo -e "MYSQL IS $YELLOW ALREADY INSTALLED"
 
 
 fi
@@ -43,6 +43,6 @@ then
     dnf install git -y
     VALIDATE $? INSTALLING GIT
 else
-    echo "GIT IS $YELLOW ALREADY INSTALLED"
+    echo -e "GIT IS $YELLOW ALREADY INSTALLED"
 fi
 
