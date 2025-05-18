@@ -21,28 +21,27 @@ VALIDATE(){
     fi
 }
 
-echo "Script Execution Started at: $timestamp" & >>$LOGS
+echo "Script Execution Started at: $timestamp" &>>$LOGS
 
 if [ $USERID -ne 0 ] 
 then
     echo "ERROR:: You must have sudo previliges"
     exit 1 
 fi
-dnf list installed mysql & >>$LOGS
+dnf list installed mysql &>>$LOGS
 
 if [ $? -ne 0 ]
 then # not installed
-    dnf install mysql -y & >>$LOGS
+    dnf install mysql -y &>>$LOGS
     VALIDATE $? INSTALLING MYSQL
 else
-    echo -e "MYSQL IS ALREADY $YELLOW INSTALLED"
+    echo -e "MYSQL IS ALREADY $YELLOW INSTALLED" 
 fi
 
-echo "Checking for GIT installation"
-dnf list installed git & >>$LOGS
+dnf list installed git &>>$LOGS
 if [ $? -ne 0 ]
 then
-    dnf install git -y & >>$LOGS
+    dnf install git -y &>>$LOGS
     VALIDATE $? INSTALLING GIT
 else
     echo -e "GIT IS ALREADY $YELLOW INSTALLED"
