@@ -25,7 +25,7 @@ dnf list installed mysql
 if [ $? -ne 0 ]
 then # not installed
     dnf install mysql -y
-    validate $? installing mysql
+    VALIDATE $? installing mysql
 else
     echo "Mysql is already installed"
 
