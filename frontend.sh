@@ -36,30 +36,30 @@ echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 CHECK_ROOT
 
-dnf install nginx -y 
+dnf install nginx -y &>>$LOGS
 VALIDATE $? "Nginx Installation"
 
-systemctl enable nginx
+systemctl enable nginx &>>$LOGS
 VALIDATE $? "Nginx Service Enable"
 
-systemctl start nginx
+systemctl start nginx &>>$LOGS
 VALIDATE $? "Nginx Service Start"
 
-rm -rf /usr/share/nginx/html/*
+rm -rf /usr/share/nginx/html/* &>>$LOGS
 VALIDATE $? "Nginx HTML Folder Clean"
 
-curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$LOGS
 VALIDATE $? "Frontend Zip Download"
 
-cd /usr/share/nginx/html
+cd /usr/share/nginx/html &>>$LOGS
 
-unzip /tmp/frontend.zip
+unzip /tmp/frontend.zip &>>$LOGS
 VALIDATE $? "Unzip frontend"
 
-cp /home/ec2-user/DevOps/expense.conf /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/DevOps/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGS
 VALIDATE $? "Nginx Config Copy"
 
-systemctl restart nginx
+systemctl restart nginx &>>$LOGS
 VALIDATE $? "Nginx Service Restart"
 
 
