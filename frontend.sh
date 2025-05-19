@@ -54,8 +54,11 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip
 VALIDATE $? "Unzip frontend"
 
-cp /etc/nginx/default.d/expense.conf
+cp /home/ec2-user/DevOps/expense.conf /etc/nginx/default.d/expense.conf
+VALIDATE $? "Nginx Config Copy"
 
+systemctl restart nginx
+VALIDATE $? "Nginx Service Restart"
 
 
 
