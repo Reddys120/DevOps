@@ -36,10 +36,10 @@ dnf module disable nodejs -y &>>$LOGS
 VALIDATE $? "Disabling existing nodejs module"
 
 dnf module enable nodejs:20 -y &>>$LOGS
-validate $? "Enabling nodejs 20 module"
+VALIDATE $? "Enabling nodejs 20 module"
 
 dnf install nodejs -y &>>$LOGS
-validate $? "Installing Nodejs"
+VALIDATE $? "Installing Nodejs"
 
 useradd expense &>>$LOGS
 VALIDATE $? "Adding expense User"
