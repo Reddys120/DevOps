@@ -50,8 +50,14 @@ then
     echo -e "user already $GREEN Exists $NC"
 fi 
 
-mkdir /app &>>$LOGS
-VALIDATE $? "Creating app directory"
+cd /app/
+if [ $? -ne 0 ]
+then 
+    mkdir /app &>>$LOGS
+    VALIDATE $? "Creating app directory"
+    else 
+    echo "App directory already $GREEN Exists $NC"
+fi
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS
 VALIDATE $? "Downloading backend code"
