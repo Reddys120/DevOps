@@ -1,17 +1,18 @@
 #!/bin/bash
 
---------------------
-VARIABLE SPECIAL :-
---------------------
-echo "$0	Script name"
-echo "$1-$9	Positional arguments"
-echo "$@	All arguments (individually quoted)"
-echo "$*	All arguments (as a single string)"
-echo "$#	Number of arguments"
-echo "$?	Exit status of last command"
-echo "$$	PID of current script"
-echo "$!	PID of last background process"
-echo "$_	Last argument of last command"
+ Special Shell Variables (Used in Scripts)
+| Variable  | Description                                    | Example Output                    |
+| --------- | ---------------------------------------------- | --------------------------------- |
+| `$0`      | Script name                                    | `./myscript.sh`                   |
+| `$1`–`$9` | Positional arguments (1st to 9th)              | `$1`, `$2`, ...                   |
+| `$@`      | All arguments as **individual** quoted strings | `"arg1" "arg2"`                   |
+| `$*`      | All arguments as **one** single string         | `"arg1 arg2"`                     |
+| `$#`      | Number of arguments                            | `2` (if two arguments are passed) |
+| `$?`      | Exit status of last command                    | `0` for success, `1` for failure  |
+| `$$`      | PID of the current script                      | `32456`                           |
+| `$!`      | PID of the last background process             | `32457`                           |
+| `$_`      | Last argument of the previous command          | `filename.txt`                    |
+
 
 ---------------------
 CONDITION SPECIAL :-

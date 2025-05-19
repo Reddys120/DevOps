@@ -29,7 +29,8 @@ CHECK_ROOT(){
     fi 
 }
 
-mkdir -p /var/log/shell_script_logs/
+mkdir -p $LOG_FOLDER
+
 VALIDATE $? "LOGS PATH"
 
 echo "Script Execution Started at: $Timestamp" &>>$LOGS

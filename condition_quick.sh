@@ -12,7 +12,7 @@
 | `-a`             | Logical AND (in `[ ]`, avoid in `[[ ]]`)              | `[ -f file -a -r file ]`          |                              |                  |   |                       |
 | `-o`             | Logical OR (in `[ ]`, avoid in `[[ ]]`)               | `[ $x -lt 1 -o $y -gt 5 ]`        |                              |                  |   |                       |
 | `&&`             | AND operator between commands                         | `[ $x -gt 0 ] && echo "Positive"` |                              |                  |   |                       |
-| OR               | operator between commands | \`\[ \$x -gt 0 ]          |  echo "Non-positive"\`            |
+| OR               | operator between commands                             | `[ $x -gt 0 ] OR echo "Non-positive"`|
 
 
 Integer Comparison Operators
@@ -35,4 +35,3 @@ String Comparison Operators
 | `>`         | Greater than (lexical) | `[[ $a > $b ]]`  |
 | `-z`        | String is empty        | `[ -z "$str" ]`  |
 | `-n`        | String is not empty    | `[ -n "$str" ]`  |
-    
