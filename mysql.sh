@@ -41,5 +41,12 @@ VALIDATE $? Enabling Mysqld
 systemctl start mysqld
 VALIDATE $? Starting Mysqld
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? Setting root passsword 
+mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;'
+if [ $? -ne 0]
+then
+    echo "Mysql Root password not setup"
+    mysql.reddytraders.shop -u root -pExpenseApp@1
+    VALIDATE $? Setting root passsword 
+else
+    echo -e "Mysql Root password already setup ... $YELLOW skkiping $NC"    
+fi
