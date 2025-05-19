@@ -7,7 +7,7 @@ GREEN="\e[32m"
 YELLOW="\e[33m"
 BLUE="\e[34m"
 LOG_FOLDER="/var/log/shell_script_logs"
-LOG_FILE=$(echo $0 | cut -d "." -f1)
+LOG_FILE=$(echo $0 | awk -F "/" '{print $NF}' cut -d "." -f1)
 LOGS="$LOG_FOLDER/$LOG_FILE-$Timestamp.log"
 
 VALIDATE(){
