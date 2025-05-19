@@ -38,5 +38,15 @@ if [ -d "$SOURCE_DIR" ];
 then
     echo -e "$GREEN Folder exists. $NC"
 else
-    echo -e "$RED Folder does not exist.$NC"
+    echo -e "$RED Folder not exist.$NC"
+    exit 1
 fi
+
+if [ -d "$DEST_DIR" ]; then
+    echo -e "$GREEN Folder exists. $NC"
+else
+    echo -e "$RED Folder not exist.$NC"
+    exit 1
+fi
+
+echo "Script Execution Started at: $Timestamp"
