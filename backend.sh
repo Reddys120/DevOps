@@ -42,12 +42,12 @@ dnf install nodejs -y &>>$LOGS
 VALIDATE $? "Installing Nodejs"
 
 id expense
-if [ $? -ne 0]
+if [ $? -ne 0 ]
 then 
     useradd expense &>>$LOGS
     VALIDATE $? "Adding expense User"
     else 
-    echo -e "user already $GREEN Exists $NC"
+    echo -e "user already $GREEN Exists $NC" &>>$LOGS
 fi 
 
 cd /app/
@@ -56,7 +56,7 @@ then
     mkdir /app &>>$LOGS
     VALIDATE $? "Creating app directory"
     else 
-    echo "App directory already $GREEN Exists $NC"
+    echo -e "App directory already $GREEN Exists $NC" &>>$LOGS
 fi
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS
