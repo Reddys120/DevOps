@@ -33,7 +33,7 @@ CHECK_ROOT(){
 echo "Script Execution Started at: $Timestamp" 
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1 | wc -l)
-if [ $FILES_TO_DELETE -gt 2 ]
+if [ $FILES_TO_DELETE -gt 1 ]
 then
     rm -rf $SOURCE_DIR/*
     VALIDATE $? "Deleting Old logs"
