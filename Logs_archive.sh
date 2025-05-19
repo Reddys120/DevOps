@@ -52,3 +52,5 @@ fi
 echo "Script Execution Started at: $Timestamp"
 
 LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
+echo "Logs are $LOGS_ARCHIVE"
