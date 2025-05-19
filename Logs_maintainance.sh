@@ -36,5 +36,5 @@ VALIDATE $? "LOGS PATH"
 
 echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
-FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +10)
-echo "files to be deleted $FILES_TO_DELETE "
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +10) |wc -l
+echo "files to be deleted $FILES_TO_DELETE " 
