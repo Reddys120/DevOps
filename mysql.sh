@@ -31,14 +31,14 @@ CHECK_ROOT(){
 echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 
-dnf install mysql -y &>>$LOGS
+dnf install mysql-server -y &>>$LOGS
 VALIDATE $? INSTALLING MYSQL
 
 systemctl enable mysqld
-VALIDATE $? Enabling Mysqld ...SUCCESS
+VALIDATE $? Enabling Mysqld
 
 systemctl start mysqld
-VALIDATE $? Starting Mysqld ...SUCCESS
+VALIDATE $? Starting Mysqld
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? Setting root passsword ...Success
+VALIDATE $? Setting root passsword
