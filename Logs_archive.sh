@@ -54,5 +54,9 @@ fi
 echo "Script Execution Started at: $Timestamp"
 
 LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
-
-echo "Logs are $LOGS_ARCHIVE"
+if [ -n $LOGS_ARCHIVE]
+then 
+     echo "Logs are $LOGS_ARCHIVE"
+else
+     echo "No logs found"
+fi
