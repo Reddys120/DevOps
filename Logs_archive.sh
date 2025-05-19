@@ -60,6 +60,14 @@ then
      echo "Logs are $LOGS_ARCHIVE"
      ZIP_LOGS="$DEST_DIR/archive.logs-$Timestamp.zip"
      find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS"
+        if [ -f "$ZIP_LOGS" ]
+        then
+        echo -e "$GREEN Logs archived successfully.$NC"
+        VALIDATE 0 "Logs archived successfully."
+        else
+        echo -e "$RED Logs not archived.$NC"
+        VALIDATE 1 "Logs not archived."
+        fi
 else
      echo "No logs found"
 fi
