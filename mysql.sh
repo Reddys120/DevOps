@@ -41,6 +41,9 @@ VALIDATE $? Enabling Mysqld
 systemctl start mysqld &>>$LOGS
 VALIDATE $? Starting Mysqld
 
+systemctl status mysqld
+VALIDATE $? Started Mysqld
+
 mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGS
 if [ $? -ne 0 ]
     then
