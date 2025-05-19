@@ -33,6 +33,7 @@ CHECK_ROOT(){
 echo "Script Execution Started at: $Timestamp" 
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1 | wc -l)
+echo "Files to be deleted" $FILES_TO_DELETE
 if [ $FILES_TO_DELETE -gt 1 ]
 then
     rm -rf $SOURCE_DIR/*
@@ -41,3 +42,12 @@ then
 else
     echo -e "$GREEN No logs to delete $NC" 
 fi
+
+# FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1)
+# echo "Files to be deleted" $FILES_TO_DELETE
+
+# while read -r file
+# do 
+#     echo -e "$RED Deleting file $NC"
+#     rm -rf $file
+# done <<< $FILES_TO_DELETE
