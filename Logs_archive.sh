@@ -23,7 +23,7 @@ VALIDATE(){
 }
 
 USAGE(){
-    echo -e "$RED ERROR:: sh Logs_archive.sh </var/log/shell_script_logs/active> </var/log/shell_script_logs/archive> <Number of days(Optional)>  $NC"
+    echo -e "$RED ERROR:: $NC sh Logs_archive.sh <SOURCE_DIR> <DEST_DIR> <DAYS(Optional)>"
 
 }
 
