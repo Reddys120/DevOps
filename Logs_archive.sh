@@ -62,7 +62,7 @@ then
      find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS" &>>$LOGS
         if [ -f "$ZIP_LOGS" ]
         then
-        echo -e "$GREEN Logs zip older than 14 days archived successfully $NC"
+        echo -e "$GREEN Logs older than 14 days zipped successfully $NC"
         else
         echo -e "$RED Logs zipping Failed $NC"
         fi
