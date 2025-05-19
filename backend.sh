@@ -63,6 +63,7 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 VALIDATE $? "Downloading backend code"
 
 mkdir -p /app
+VALIDATE $? "App directory"
 
 cd /app
 
