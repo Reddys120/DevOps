@@ -34,6 +34,9 @@ echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 CHECK_ROOT
 
+mkdir -p /var/log/shell_script_logs/
+VALIDATE $? "LOGS PATH"
+
 dnf install nginx -y 
 VALIDATE $? "Nginx Installation"
 
