@@ -62,6 +62,8 @@ fi
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOGS
 VALIDATE $? "Downloading backend code"
 
+mkdir -p /app
+
 cd /app
 
 rm -rf *
@@ -91,7 +93,7 @@ VALIDATE $? "Reloading systemd daemon"
 systemctl enable backend &>>$LOGS
 VALIDATE $? "Enable backend"
 
-systemctl start backend &>>$LOGS
+systemctl restart backend &>>$LOGS
 VALIDATE $? "Starting backend"
 
 systemctl status backend &>>$LOGS
