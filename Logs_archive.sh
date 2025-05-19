@@ -38,7 +38,7 @@ then
 fi
 if [ -d "$SOURCE_DIR" ]; 
 then
-    echo -e "$GREEN Folder exists. $NC"
+    echo -e "$GREEN Folder exists. $NC" 
 else
     echo -e "$RED Folder not exist.$NC"
     exit 1
@@ -51,15 +51,15 @@ else
     exit 1
 fi
 
-echo "Script Execution Started at: $Timestamp"
+echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) &>>$LOGS
 
 if [ -n "$LOGS_ARCHIVE" ] # if not empty zip the logs
 then 
-     echo "Logs are $LOGS_ARCHIVE"
-     ZIP_LOGS="$DEST_DIR/archive.logs-$Timestamp.zip"
-     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS"
+     echo "Logs are $LOGS_ARCHIVE" 
+     ZIP_LOGS="$DEST_DIR/archive.logs-$Timestamp.zip" &>>$LOGS
+     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS" &>>$LOGS
         if [ -f "$ZIP_LOGS" ]
         then
         VALIDATE 0 "Logs archived successfully."
