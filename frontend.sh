@@ -29,13 +29,12 @@ CHECK_ROOT(){
     fi 
 }
 
-echo "Script Execution Started at: $Timestamp" &>>$LOGS
-
-
-CHECK_ROOT
-
 mkdir -p /var/log/shell_script_logs/
 VALIDATE $? "LOGS PATH"
+
+echo "Script Execution Started at: $Timestamp" &>>$LOGS
+
+CHECK_ROOT
 
 dnf install nginx -y 
 VALIDATE $? "Nginx Installation"
