@@ -30,7 +30,7 @@ CHECK_ROOT(){
     fi 
 }
 
-echo "Script Execution Started at: $Timestamp" &>>$LOGS
+echo "Script Execution Started at: $Timestamp" 
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1 | wc -l)
 if [ $FILES_TO_DELETE -gt 2 ]
