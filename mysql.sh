@@ -1,32 +1,44 @@
 #!/bin/bash
 
-
+Timestamp=$(date +%Y-%m-%d-%H-%M-%S)
 USERID=$(id -u)
-if [ $USERID -ne 0 ] 
-then
-    echo "ERROR:: You must have sudo previliges"
-    exit 1 #other than 0
-fi
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+LOG_FOLDER="/var/log/shell_script_logs"
+LOG_FILE=$(echo $0 | cut -d "." -f1)
+LOGS="$LOG_FOLDER/$LOG_FILE-$Timestamp.log"
 
-dnf list installed mysql
-if [ $? -ne 0 ]
+VALIDATE(){
+    if [ $1 -ne 0 ]
+    then
+        echo -e "$2 ... $RED FAILED"
+        exit 1
+    else
+        echo -e "$2 ... $GREEN SUCCESS" 
+    fi
+}
 
-dnf install mysql -y
+CHECK_ROOT(){
+    if [ $USERID -ne 0 ] 
+    then
+        echo "ERROR:: You must have sudo previliges"
+        exit 1
+    fi 
+}
 
-if [ $? -ne 0 ]
-then 
-    echo "installing mysql....failed"
-    exit 1 #other than 0
-else 
-    echo "installing mysql....success"
-fi
+echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
-dnf install git -y
 
-if [ $? -ne 0 ]
-then 
-    echo "installing git failed"
-    exit 1 #other than 0
-else 
-    echo "installing git success"
-fi
+dnf install mysql -y &>>$LOGS
+VALIDATE $? INSTALLING MYSQL
+
+systemctl enable mysqld
+VALIDATE $? Enabling Mysqld ...SUCCESS
+
+systemctl start mysqld
+VALIDATE $? Starting Mysqld ...SUCCESS
+
+mysql_secure_installation --set-root-pass ExpenseApp@1
+VALIDATE $? Setting root passsword ...Success
