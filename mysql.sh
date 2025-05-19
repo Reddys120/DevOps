@@ -14,10 +14,10 @@ LOGS="$LOG_FOLDER/$LOG_FILE-$Timestamp.log"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 ... $RED FAILED $NC"
+        echo -e "$? ... $RED FAILED $NC"
         exit 1
     else
-        echo -e "$2 ... $GREEN SUCCESS $NC" 
+        echo -e "$? ... $GREEN SUCCESS $NC" 
     fi
 }
 
@@ -42,4 +42,4 @@ systemctl start mysqld
 VALIDATE $? Starting Mysqld
 
 mysql_secure_installation --set-root-pass ExpenseApp@1
-VALIDATE $? Setting root passsword
+VALIDATE $? Setting root passsword 
