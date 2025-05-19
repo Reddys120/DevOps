@@ -10,6 +10,8 @@ NC='\e[0m' # No Color
 
 SOURCE_DIR="$1"
 DEST_DIR="$2"
+DAYS=${3:-3} # default 3 days
+
 
 LOG_FOLDER="/var/log/shell_script_logs/archive"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
@@ -26,7 +28,7 @@ VALIDATE(){
 }
 
 USAGE(){
-    echo -e "$RED ERROR:: $NC sh Logs_archive.sh <SOURCE_DIR> <DEST_DIR> <DAYS>"
+    echo -e "$RED ERROR:: $NC sh Logs_archive.sh <SOURCE_DIR> <DEST_DIR> <DAYS(Optional)>"
 
 }
 
@@ -51,6 +53,6 @@ fi
 
 echo "Script Execution Started at: $Timestamp"
 
-LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log")
+LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 echo "Logs are $LOGS_ARCHIVE"
