@@ -46,7 +46,7 @@ if [ $? -ne 0 ]
 then 
     useradd expense &>>$LOGS
     VALIDATE $? "Adding expense User"
-    else 
+else 
     echo -e "user already Exists $YELLOW...skiping $NC" &>>$LOGS
 fi 
 
@@ -55,7 +55,7 @@ if [ $? -ne 0 ]
 then 
     mkdir /app &>>$LOGS
     VALIDATE $? "Creating app directory"
-    else 
+else 
     echo -e "App directory already $GREEN Exists $NC" &>>$LOGS
 fi
 
@@ -68,7 +68,7 @@ rm -rf *
 if [ $? -ne 0 ]
 then 
     echo -e "$RED Failed to remove existing files $NC" &>>$LOGS
-    else
+else
     unzip /tmp/backend.zip &>>$LOGS
     VALIDATE $? "unzip backend code"
 fi
