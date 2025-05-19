@@ -34,8 +34,9 @@ if [ $# -lt 2 ]
 then
     USAGE
 fi
-if [ -d "$SOURCE_DIR" ]; then
-    echo "Folder exists."
+if [ -d "$SOURCE_DIR" ]; 
+then
+    echo -e "$GREEN Folder exists. $NC"
 else
-    echo "Folder does not exist."
+    echo -e "$RED Folder does not exist.$NC"
 fi
