@@ -10,7 +10,6 @@ LOG_FOLDER="/var/log/shell_script_logs"
 LOG_FILE=$(echo $0 | cut -d "." -f1)
 LOGS="$LOG_FOLDER/$LOG_FILE-$Timestamp.log"
 
-
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
@@ -58,6 +57,3 @@ do
     echo -e "$package IS ALREADY $YELLOW INSTALLED"
     fi
 done
-
-
-
