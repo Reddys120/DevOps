@@ -64,8 +64,14 @@ VALIDATE $? "Downloading backend code"
 
 cd /app
 
-unzip /tmp/backend.zip &>>$LOGS
-VALIDATE $? "unzip backend code"
+rm -rf *
+if [ $? -ne 0 ]
+then 
+    echo -e "$RED Failed to remove existing files $NC" &>>$LOGS
+    else
+    unzip /tmp/backend.zip &>>$LOGS
+    VALIDATE $? "unzip backend code"
+fi
 
 npm install &>>$LOGS
 VALIDATE $? "Installing backend dependencies"
