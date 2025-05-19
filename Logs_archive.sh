@@ -53,7 +53,7 @@ fi
 
 echo "Script Execution Started at: $Timestamp"
 
-LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) &>>$LOGS
 
 if [ -n "$LOGS_ARCHIVE" ] # if not empty zip the logs
 then 
