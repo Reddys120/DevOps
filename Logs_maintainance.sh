@@ -39,5 +39,5 @@ then
     VALIDATE $? "Deleting Old logs"
 
 else
-    echo -e "No logs to delete" 
+    echo -e "$GREEN No logs to delete $NC" 
 fi
