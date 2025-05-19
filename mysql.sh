@@ -42,7 +42,7 @@ systemctl start mysqld
 VALIDATE $? Starting Mysqld
 
 mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;'
-if [ $? -ne 0]
+if [ $? -ne 0 ]
     then
     echo "Mysql Root password not setup"
     mysql.reddytraders.shop -u root -pExpenseApp@1
