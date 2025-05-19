@@ -47,7 +47,7 @@ then
     useradd expense &>>$LOGS
     VALIDATE $? "Adding expense User"
     else 
-    echo -e "user already $GREEN Exists $NC" &>>$LOGS
+    echo -e "user already Exists $GREEN ...skiping $NC" &>>$LOGS
 fi 
 
 cd /app/
