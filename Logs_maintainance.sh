@@ -37,7 +37,7 @@ VALIDATE $? "LOGS PATH"
 echo "Script Execution Started at: $Timestamp" &>>$LOGS
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1 | wc -l)
-if [ $1 -gt 2 ]
+if [ $FILES_TO_DELETE -gt 2 ]
 then
     rm -rf $SOURCE_DIR/*
     VALIDATE $? "Deleting Old logs"
