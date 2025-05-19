@@ -41,13 +41,13 @@ VALIDATE $? "Enabling nodejs 20 module"
 dnf install nodejs -y &>>$LOGS
 VALIDATE $? "Installing Nodejs"
 
-id expense
+id expense &>>$LOGS
 if [ $? -ne 0 ]
 then 
     useradd expense &>>$LOGS
     VALIDATE $? "Adding expense User"
 else 
-    echo -e "user already Exists $YELLOW...skiping $NC" &>>$LOGS
+    echo -e "user already Exists $YELLOW...skiping $NC"
 fi 
 
 cd /app/
