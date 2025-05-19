@@ -43,10 +43,10 @@ VALIDATE $? Starting Mysqld
 
 mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;'
 if [ $? -ne 0]
-then
+    then
     echo "Mysql Root password not setup"
     mysql.reddytraders.shop -u root -pExpenseApp@1
     VALIDATE $? Setting root passsword 
-else
+    else
     echo -e "Mysql Root password already setup ... $YELLOW skkiping $NC"    
 fi
