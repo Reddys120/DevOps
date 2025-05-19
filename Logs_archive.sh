@@ -57,15 +57,23 @@ LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS) &>>$LOGS
 
 if [ -n "$LOGS_ARCHIVE" ] # if not empty zip the logs
 then 
-     echo "Logs are $LOGS_ARCHIVE" 
-     ZIP_LOGS="$DEST_DIR/archive.logs-$Timestamp.zip" &>>$LOGS
-     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS" &>>$LOGS
-        if [ -f "$ZIP_LOGS" ]
+    echo "Logs are $LOGS_ARCHIVE" 
+    ZIP_LOGS="$DEST_DIR/archive.logs-$Timestamp.zip" &>>$LOGS
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS" &>>$LOGS
+    if [ -f "$ZIP_LOGS" ]
         then
         echo -e "$GREEN Logs older than 14 days zipped successfully $NC"
-        else
+        while read -r OLD_ARCH_LOGS # Variable to delete the old ARCH logs
+        do 
+            echo -e "Deleting file: $OLD_ARCH_LOGS" &>>$LOGS
+            rm -rf "$OLD_ARCH_LOGS" &>>$LOGS
+            echo "Deleted file : $OLD_ARCH_LOGS" &>>$LOGS
+        done <<<$LOGS_ARCHIVE
+    else
         echo -e "$RED Logs zipping Failed $NC"
-        fi
+        exit 1
+    
+    fi
 else
      echo "No logs found"
 fi
