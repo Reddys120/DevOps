@@ -35,18 +35,18 @@ echo "Script Execution Started at: $Timestamp" &>>$LOGS
 dnf install mysql-server -y &>>$LOGS
 VALIDATE $? INSTALLING MYSQL
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOGS
 VALIDATE $? Enabling Mysqld
 
-systemctl start mysqld
+systemctl start mysqld &>>$LOGS
 VALIDATE $? Starting Mysqld
 
-mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;'
+mysql -h mysql.reddytraders.shop -u root -pExpenseApp@1 -e 'show databases;' &>>$LOGS
 if [ $? -ne 0 ]
     then
-    echo "Mysql Root password not setup"
-    mysql.reddytraders.shop -u root -pExpenseApp@1
+    echo "Mysql Root password not setup" &>>$LOGS
+    mysql.reddytraders.shop -u root -pExpenseApp@1 &>>$LOGS
     VALIDATE $? Setting root passsword 
     else
-    echo -e "Mysql Root password already setup ... $YELLOW skkiping $NC"    
+    echo -e "Mysql Root password already setup ... $YELLOW skkiping $NC"  &>>$LOGS
 fi
