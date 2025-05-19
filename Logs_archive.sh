@@ -34,3 +34,8 @@ if [ $# -lt 2 ]
 then
     USAGE
 fi
+if [ -d "$SOURCE_DIR" ]; then
+    echo "Folder exists."
+else
+    echo "Folder does not exist."
+fi
