@@ -55,9 +55,11 @@ echo "Script Execution Started at: $Timestamp"
 
 LOGS_ARCHIVE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
-if [ -n "$LOGS_ARCHIVE" ]
+if [ -n "$LOGS_ARCHIVE" ] # if not empty zip the logs
 then 
      echo "Logs are $LOGS_ARCHIVE"
+     ZIP_LOGS="$SOURCE_DIR/archive.logs-$Timestamp.zip"
+     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$ZIP_LOGS"
 else
      echo "No logs found"
 fi
