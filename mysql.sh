@@ -14,10 +14,10 @@ LOGS="$LOG_FOLDER/$LOG_FILE-$Timestamp.log"
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$? ... $RED FAILED $NC"
+        echo -e "$2 ... $RED FAILED $NC"
         exit 1
     else
-        echo -e "$? ... $GREEN SUCCESS $NC" 
+        echo -e "$2 ... $GREEN SUCCESS $NC" 
     fi
 }
 
