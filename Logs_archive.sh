@@ -63,11 +63,11 @@ then
     if [ -f "$ZIP_LOGS" ]
         then
         echo -e "$GREEN Logs older than 14 days zipped successfully $NC"
-        while read -r OLD_ARCH_LOGS # Variable to delete the old ARCH logs
+        while read -r OLD_SOURCE_LOGS # Variable to delete the old logs
         do 
-            echo -e "Deleting file: $OLD_ARCH_LOGS" &>>$LOGS
-            rm -rf "$OLD_ARCH_LOGS" &>>$LOGS
-            echo "Deleted file : $OLD_ARCH_LOGS" &>>$LOGS
+            echo -e "Deleting file: $OLD_SOURCE_LOGS" &>>$LOGS
+            rm -rf "$OLD_SOURCE_LOGS" &>>$LOGS
+            echo "Deleted file : $OLD_SOURCE_LOGS" &>>$LOGS
         done <<<$LOGS_ARCHIVE
     else
         echo -e "$RED Logs zipping Failed $NC"
