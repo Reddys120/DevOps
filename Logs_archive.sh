@@ -26,7 +26,7 @@ VALIDATE(){
 }
 
 USAGE(){
-    echo -e "$RED ERROR:: $NC sh Logs_archive.sh <SOURCE_DIR> <DEST_DIR> <DAYS(Optional)>"
+    echo -e "$RED ERROR:: $NC sh Logs_archive.sh <SOURCE_DIR> <DEST_DIR> <DAYS>"
 
 }
 
