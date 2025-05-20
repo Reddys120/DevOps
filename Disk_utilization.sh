@@ -10,7 +10,7 @@ do
     #echo "FILESYSTEM:$PARTITION = $UTILIZATION  "
     if [ $UTILIZATION -ge $DISK_THRESHOLD ]
     then
-       MSG+="High Disk usage on Partition: $PARTITION Usage is: $USAGE \n " 
+       MSG+="High Disk usage on Partition: $PARTITION Usage is: $UTILIZATION \n " 
     fi
 done <<< $DISK_USAGE
 
