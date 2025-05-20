@@ -3,16 +3,17 @@
 - name: Nginx Check
   hosts: web
   become: yes
-  tasks:
 
-- name: Check if nginx is already installed
-  ansible.builtin.package_facts: dpkg -l | grep -w nginx
-  register: nginx_check
-  ignore_errors: true
+- name: Gather package facts
+  ansible.builtin.package_facts:
+
+- name: Print nginx status
+  debug:
+    msg: "NGINX is installed"
+  when: "'nginx' in ansible_facts.packages"
 
 - name: Install nginx if not installed
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: nginx
     state: present
-    update_cache: yes
-  when: nginx_check.rc != 0
+  when: "'nginx' not in ansible_facts.packages"
