@@ -1,0 +1,10 @@
+- name: Install Mysql database
+  hosts: web
+  become: yes
+  tasks: 
+  - name: Install Mysql Database
+    ansible.builtin.dnf:
+    name: {{item}}
+
+    loop:
+      - mysql
