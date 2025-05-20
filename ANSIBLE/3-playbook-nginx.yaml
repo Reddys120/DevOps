@@ -2,8 +2,8 @@
   hosts: web
   become: yes
   vars: 
-    server: nginx
-    state: present
+    server: "nginx"
+    state: "present"
   tasks:
   - name: Nginx Installation
     ansible.builtin.package:    
