@@ -8,7 +8,7 @@ do
     UTILIZATION=$(echo "$percentage" | awk -F " " '{print $6F}' | sed 's/%//g')
     PARTITION=$(echo "$percentage" | awk -F " " '{print $NF}') 
     #echo "FILESYSTEM:$PARTITION = $UTILIZATION  "
-    if [ $DISK_USAGE -ge $DISK_THRESHOLD ]
+    if [ $UTILIZATION -ge $DISK_THRESHOLD ]
     then
        MSG+="Disk utilization has reached threshold...Please check" 
     fi
