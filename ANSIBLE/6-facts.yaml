@@ -2,5 +2,6 @@
   hosts: web
   gather_facts: yes
   tasks: 
-   ansible.builtin.debug:
+  - name: Print the facts
+    ansible.builtin.debug:
       msg: "{{ ansible_facts }}"
