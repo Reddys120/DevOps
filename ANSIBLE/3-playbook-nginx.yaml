@@ -3,12 +3,12 @@
   become: yes
   vars: 
     server: nginx
-    state: {{ present }} {{ absent }}
+    state: present
   tasks:
   - name: Nginx Installation
     ansible.builtin.package:    
       name: {{ server }}
-      state: present
+      state: {{present}}
       msg: "Server state is {{ state }}"
     when: state != presrent
 
