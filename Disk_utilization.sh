@@ -13,7 +13,7 @@ do
        MSG+="DISK: $PARTITION Usage is: $UTILIZATION \n " 
     fi
 done <<< $DISK_USAGE
-
-echo -e "Message: <br> $MSG"
+echo "High Disk Usage"
+echo -e "$MSG"
 
 echo "$MSG" | mutt -s "High Disk Usage" rajeshekaraleti@gmail.com
