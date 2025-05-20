@@ -13,3 +13,5 @@ do
        MSG+="Disk utilization has reached threshold...Please check" 
     fi
 done <<< $DISK_USAGE
+
+echo -e "Message: $MSG"
