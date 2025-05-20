@@ -1,5 +1,6 @@
 - name: Gathering the facts
   hosts: web
+
 - tasks: 
-  ansible.builtin.package:
-  msg: "Print the facts"
+    ansible.builtin.package:
+    msg: "Print the facts"
