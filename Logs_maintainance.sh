@@ -31,7 +31,7 @@ CHECK_ROOT(){
 }
 
 echo "Script Execution Started at: $Timestamp" 
-
+# find /var/log -type f -mtime +7 this is for deleting 7 days old logs
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +1 | wc -l)
 echo "Files to be deleted" $FILES_TO_DELETE
 if [ $FILES_TO_DELETE -gt 1 ]
@@ -51,3 +51,5 @@ fi
 #     echo -e "$RED Deleting file $NC"
 #     rm -rf $file
 # done <<< $FILES_TO_DELETE
+
+

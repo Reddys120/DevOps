@@ -1,4 +1,5 @@
-| Keyword / Syntax | Description                                   | Example                      |
+| Ke
+yword / Syntax | Description                                   | Example                      |
 | ---------------- | --------------------------------------------- | ---------------------------- |
 | `function`       | (Optional) Used to declare a function         | `function myfunc { ... }`    |
 | `()`             | Denotes function definition                   | `myfunc() { ... }`           |
