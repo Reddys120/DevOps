@@ -1,6 +1,6 @@
 - name: Gathering the facts
   hosts: web
-
+-
 - tasks: 
     gather_facts:
-    msg: "Print the {{ gather_facts }} facts"
+    msg: "Print the gather_facts"
