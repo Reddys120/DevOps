@@ -17,4 +17,5 @@ do
     UTILIZATION=$(echo "$percentage" | awk -F " " '{print $6F}')
     PARTITION==$(echo "$percentage" | awk -F " " '{print $NF}') 
     echo "FILESYSTEM$PARTITION = $UTILIZATION  " 
+    VALIDATE $? 
 done <<< $DISK_USAGE
