@@ -10,4 +10,5 @@ do
     if [ $DISK_USAGE -gt $DISK_THRESHOLD ]
     then
         echo " Disk utilization has reached threshold...Please check " 
+    fi
 done <<< $DISK_USAGE
