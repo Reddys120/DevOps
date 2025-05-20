@@ -1,16 +1,11 @@
 - name: Install and run Nginx
   hosts: web
   become: yes
-  vars: 
-    server: "nginx"
-    state: "present"
   tasks:
   - name: Nginx Installation
     ansible.builtin.package:    
-      name: {{ server }}
-      state: {{present}}
-      msg: "Server state is {{ state }}"
-    when: state != presrent
+      name: nginx
+      state: present
 
   - name: Nginx start
     ansible.builtin.service:
