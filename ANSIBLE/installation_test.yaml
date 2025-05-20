@@ -1,19 +1,18 @@
+- name: Check if nginx is installed using package_facts
+  hosts: all
+  become: true
+  tasks:
 
+    - name: Gather package facts
+      ansible.builtin.package_facts:
 
-- name: Nginx Check
-  hosts: web
-  become: yes
+    - name: Display if nginx is installed
+      debug:
+        msg: "NGINX is already installed"
+      when: "'nginx' in ansible_facts.packages"
 
-- name: Gather package facts
-  ansible.builtin.package_facts:
-
-- name: Print nginx status
-  debug:
-    msg: "NGINX is installed"
-  when: "'nginx' in ansible_facts.packages"
-
-- name: Install nginx if not installed
-  ansible.builtin.package:
-    name: nginx
-    state: present
-  when: "'nginx' not in ansible_facts.packages"
+    - name: Install nginx if not installed
+      ansible.builtin.package:
+        name: nginx
+        state: present
+      when: "'nginx' not in ansible_facts.packages"
