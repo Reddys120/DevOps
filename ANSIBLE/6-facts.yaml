@@ -1,6 +1,6 @@
 - name: Gathering the facts
   hosts: web
-  gather_facts: yes
+  #gather_facts: yes
   tasks: 
   - name: Print the facts
     ansible.builtin.debug:
