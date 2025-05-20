@@ -1,5 +1,9 @@
 
 
+- name: Nginx Check
+  hosts: web
+  become: yes
+  tasks:
 
 - name: Check if nginx is already installed
   ansible.builtin.shell: dpkg -l | grep -w nginx
