@@ -2,5 +2,5 @@
   hosts: web
 
 - tasks: 
-    ansible.builtin.package:
+    gather_facts:
     msg: "Print the facts"
