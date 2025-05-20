@@ -16,5 +16,5 @@ while read -r percentage
 do  
     UTILIZATION=$(echo "$percentage" | awk -F " " '{print $6F}')
     PARTITION==$(echo "$percentage" | awk -F " " '{print $NF}') 
-    echo " $PARTITION $UTILIZATION  " 
+    echo " $PARTITION , $UTILIZATION  " 
 done <<< $DISK_USAGE
