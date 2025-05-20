@@ -5,6 +5,6 @@ DISK_THRESHOLD=5 # 5% threshold
 while read -r percentage
 do  
     UTILIZATION=$(echo "$percentage" | awk -F " " '{print $6F}')
-    PARTITION==$(echo "$percentage" | awk -F " " '{print $NF}') 
+    PARTITION=$(echo "$percentage" | awk -F " " '{print $NF}') 
     echo "FILESYSTEM$PARTITION = $UTILIZATION  " 
 done <<< $DISK_USAGE
