@@ -4,13 +4,13 @@
   vars:
     course_name: "Devops with AWS" # string
     duration: "120" #number
-    topics: #list
+    topics: #list, ---> [] this means list 
     - linux
     - shell
     - ansible
     - AWS
     live: true # boolean
-    tools: # map
+    tools: # map ---> {} this means maps
       ci: jenkins
       cloud: AWS
       containerization: docker

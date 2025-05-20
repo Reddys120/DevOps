@@ -1,0 +1,8 @@
+- name: Check number
+  hosts: local
+  connection: local
+  vars: 
+    number: 18
+    ansible.builtin.debug:
+      msg: "check my number {{ number }} is greater than 15"
+    when: number > 15
