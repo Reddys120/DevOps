@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VALIDATE(){
-    if [ $2 -gt 5 ]
+    if [ $2 -gt $DISK_THRESHOLD ]
     then
         echo -e "$2 ... $RED ALERT $NC"
         exit 1
