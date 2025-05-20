@@ -3,4 +3,4 @@
 - gather_facts: yes
 - tasks: 
     ansible.builtin.debug:
-    msg: "Print the gather_facts"
+    msg: Print the "{{ gather_facts }}"
