@@ -3,4 +3,4 @@
 
 - tasks: 
     gather_facts:
-    msg: "Print the facts"
+    msg: "Print the {{ gather_facts }} facts"
