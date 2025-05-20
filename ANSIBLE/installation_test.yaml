@@ -6,7 +6,7 @@
   tasks:
 
 - name: Check if nginx is already installed
-  ansible.builtin.shell: dpkg -l | grep -w nginx
+  ansible.builtin.package: dpkg -l | grep -w nginx
   register: nginx_check
   ignore_errors: true
 
