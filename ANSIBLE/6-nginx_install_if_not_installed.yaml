@@ -16,3 +16,4 @@
         name: nginx
         state: present
       when: "'nginx' not in ansible_facts.packages"
+
