@@ -5,7 +5,7 @@
   - name: Install Mysql Database
     ansible.builtin.package:
     name: "{{item}}"
-    state: present
+    state: installed
 
     loop:
       - mysql
