@@ -1,5 +1,5 @@
 - name: Check if nginx is installed using package_facts
-  hosts: all
+  hosts: 172.31.46.186
   become: true
   tasks:
 
