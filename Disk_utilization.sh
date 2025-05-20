@@ -10,7 +10,7 @@ do
     #echo "FILESYSTEM:$PARTITION = $UTILIZATION  "
     if [ $UTILIZATION -ge $DISK_THRESHOLD ]
     then
-       MSG+="Disk utilization has reached threshold...Please check" 
+       MSG+="Disk utilization has reached threshold...Please check \n" 
     fi
 done <<< $DISK_USAGE
 
