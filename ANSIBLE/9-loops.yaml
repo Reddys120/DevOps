@@ -3,7 +3,7 @@
   become: yes
   tasks: 
   - name: Install Mysql Database
-    ansible.builtin.dnf:
+    ansible.builtin.package:
     name: "{{item}}"
     state: present
 
