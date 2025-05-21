@@ -3,11 +3,14 @@
   connection: local
   tasks:
   - name: execute is Command
-    ansible.builtin.command: ls -ltr > /tmp/output.txt
-
-- name: shell vs command
-  hosts: web 
-  connection: local
-  tasks:
-  - name: execute is Command
+    #ansible.builtin.command: ls -ltr > /tmp/output.txt
     ansible.builtin.shell: ls -ltr > /tmp/output.txt
+
+  - name: execute is Command in command module
+    #ansible.builtin.command: ls -ltr > /tmp/output.txt
+    ansible.builtin.command: ls -ltr > /tmp/output.txt
+    register: result
+
+  - name: print result
+    ansible.builtin.debug:
+    msg: "result"
