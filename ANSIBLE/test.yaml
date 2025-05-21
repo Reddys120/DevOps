@@ -1,0 +1,11 @@
+- name: Configure Mysql server
+  hosts: Mysql
+  become: yes
+  tasks: 
+  - name: Install MySQL Server
+    ansible.builtin.package:
+      name: mysql-server
+      service: installed
+
+[mysql]
+172.31.46.255

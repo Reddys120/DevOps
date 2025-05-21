@@ -6,5 +6,5 @@
   tasks:
   - name: my number is greater than 15
     ansible.builtin.debug:
-      msg: "= Number {{ number }} is greater than 15"
+      msg: "Number {{ number }} is greater than 15"
     when: number > 15
