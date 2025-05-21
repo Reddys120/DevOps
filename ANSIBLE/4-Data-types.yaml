@@ -1,6 +1,5 @@
 - name: Devops with AWS
-  hosts: local
-  connection: local
+  hosts: web
   vars: # map ---> {} this means maps
     course_name: "Devops with AWS" # string
     duration: "120" #number
