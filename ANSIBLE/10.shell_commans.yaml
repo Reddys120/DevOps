@@ -1,5 +1,5 @@
 - name: shell vs command
-  hosts: web 
+  hosts: local 
   connection: local
   tasks:
   - name: execute is Command
