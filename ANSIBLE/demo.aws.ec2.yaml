@@ -3,7 +3,7 @@ regions:
   - us-east-1
 filters:
   # This selects only running instances with tag `Environment` tag set to `dev`.
-  tag:Name: nginx
+  Name: nginx
   instance-state-name : running
 hostnames:
   # You can also specify a list in order of precedence for hostname variables.
