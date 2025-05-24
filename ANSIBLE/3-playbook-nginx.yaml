@@ -1,5 +1,5 @@
 - name: Install and run Nginx
-  hosts: aws_ec2
+  hosts: all
   become: yes
   tasks:
   - name: Nginx Installation
