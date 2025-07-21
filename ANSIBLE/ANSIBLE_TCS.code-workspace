@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../ANSIBLE_TCS"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
