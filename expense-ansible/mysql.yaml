@@ -1,0 +1,52 @@
+- name: Configure Mysql server
+  hosts: mysql
+  become: yes
+  tasks: 
+  - name: Install MySQL libraries
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop: 
+    - PyMySQL
+    - cryptography
+
+  - name: Install MySQL Server
+    ansible.builtin.package:
+      name: mysql-server
+      state: installed
+  
+  - name: Start and Enable Mysql service
+    #ansible.builtin.service: or service:
+    service:
+      name: mysqld
+      state: started
+      enabled: yes
+
+  - name: Get MySQL version
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: ExpenseApp@1
+      login_host: mysql.reddytraders.shop
+    register: mysql_info
+    ignore_errors: true
+      
+      
+  - name : Print the output
+    ansible.builtin.debug:
+      msg: "mysql_info: {{ mysql_info }}"
+
+  - name: setup root login_password
+    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+    when: mysql_info.failed is true
+
+  # - name: Query data from a MySQL table
+  #   community.mysql.mysql_query:
+  #     login_user: root
+  #     login_password: ExpenseApp@1
+  #     login_db: sys
+  #     query: "select * from version;;"
+  #   register: mysql_version
+
+  # - name: Show row count
+  #   debug:
+  #     msg: "Row version in 'mysql': {{ mysql_version }}"

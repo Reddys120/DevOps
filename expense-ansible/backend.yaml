@@ -1,0 +1,88 @@
+- name: Sever Configuration backend
+  hosts: backend
+  become: yes
+  tasks: 
+  - name: Disable nodejs 
+    ansible.builtin.command: dnf module disable nodejs -y
+    
+  - name: Enable nodejs 20
+    ansible.builtin.command: dnf module enable nodejs:20 -y
+
+  - name: Install nodejs
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - nodejs
+      - mysql
+    
+  - name: Create a user
+    ansible.builtin.user:
+      name: expense
+      state: present
+
+  - name: Create a directory if not exist
+    ansible.builtin.file:
+      path: /app
+      state: directory  
+      mode: '755'
+
+
+  - name: Download Backend code
+    ansible.builtin.get_url:
+      url:  https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+      dest: /tmp/backend.zip
+      mode: '755'
+
+  - name: Extract backend code into /app
+    ansible.builtin.unarchive:
+      src: /tmp/backend.zip
+      dest: /app
+      remote_src: yes 
+
+  - name: Install NPM libraries
+    ansible.builtin.npm:
+      name: npm
+      state: present
+      path: /app
+
+  - name: Copy a new "backend.service" file into place, backing up the original if it differs from the copied version
+    ansible.builtin.copy:
+       src: /home/ec2-user/DevOps/expense-ansible/backend.service
+       dest: /etc/systemd/system/backend.service
+       owner: root
+       group: root
+       mode: '644'
+       backup: yes
+
+  - name: Install MySQL libraries
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop: 
+    - PyMySQL
+    - cryptography
+
+  # - name: Restart backend service, in all cases, also issue daemon-reload to pick up config changes
+  #   ansible.builtin.systemd_service:
+  #     name: backend
+  #     state: restarted
+  #     enabled: yes
+  #     daemon_reload: true
+
+  - name: Import dump.sql #mysql -u <username> -p <password> < dump.sql
+    community.mysql.mysql_db:
+      login_user: root
+      login_password: ExpenseApp@1
+      login_host: mysql.reddytraders.shop
+      state: import
+      name: all
+      target: /app/schema/backend.sql
+
+    #mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql  - name: Restart backend service, in all cases, also issue daemon-reload to pick up config changes
+  - name: systemctl restart
+    ansible.builtin.systemd_service:
+      name: backend
+      state: restarted
+      enabled: yes
+      daemon_reload: true

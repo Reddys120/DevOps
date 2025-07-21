@@ -1,0 +1,49 @@
+- name: Server Configuration frontend
+  hosts: frontend
+  become: yes
+  tasks: 
+  - name: Intall Nginx
+    ansible.builtin.package:
+      name: nginx
+      state: installed
+  
+  - name: Start Nginx
+    ansible.builtin.service:
+      name: nginx
+      state: started
+      enabled: yes
+
+  - name: Remove the default content that web server is serving
+    ansible.builtin.file:
+      path: /usr/share/nginx/html/*
+      state: absent
+
+  - name: Download frontend content
+    ansible.builtin.get_url:
+      url:  https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+      dest: /tmp/frontend.zip
+
+  - name: Extract the frontend content
+    ansible.builtin.unarchive:
+      src: /tmp/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes 
+
+  - name: Copy a new "backend.service" file into place, backing up the original if it differs from the copied version
+    ansible.builtin.copy:
+       src: /home/ec2-user/DevOps/expense-ansible/expense.conf
+       dest: /etc/nginx/default.d/expense.conf
+       owner: root
+       group: root
+       mode: '644'
+       backup: yes
+
+  - name: Restart Nginx Service to load the changes of the configuration
+    ansible.builtin.service:
+      name: nginx
+      state: restarted
+    register: Logs
+  - name: print result
+    ansible.builtin.debug:
+      msg: "{{ Logs }}"
+
