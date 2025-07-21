@@ -1,0 +1,49 @@
+- name: Intall Nginx
+  ansible.builtin.package:
+    name: nginx
+    state: installed
+
+- name: Start Nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: include from common
+  include_role:
+    name: common
+    tasks_from: main # tasks from common main.yaml (we can create with any name)
+
+# - name: delete Html directory
+#   ansible.builtin.file:
+#     path: /usr/shares/nginx/html/*
+#     state: absent
+
+# - name: Download frontend content
+#   ansible.builtin.get_url:
+#     url:  https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+#     dest: /tmp/frontend.zip
+
+# - name: unzip the frontend content
+#   ansible.builtin.unarchive:
+#     src: /tmp/frontend.zip
+#     dest: /usr/share/nginx/html
+#     remote_src: yes 
+
+- name: Copy a new "backend.service" file into place, backing up the original if it differs from the copied version
+  ansible.builtin.template:
+      src: expense.conf.j2
+      dest: /etc/nginx/default.d/expense.conf
+      backup: yes
+
+- name: Restart Nginx Service to load the changes of the configuration
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+  notify:
+    - Restart Nginx 
+  register: Logs
+
+- name: print result
+  ansible.builtin.debug:
+    msg: "{{ Logs }}"
